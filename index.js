@@ -23,7 +23,15 @@ require('./routes/mainroutes')(app);
 
 // start
 app.set('port', (process.env.PORT || 5000));
+// save port
+var Ip = require('./config/port');
+//
 
-app.listen(app.get('port'), function(){
+var server = app.listen(app.get('port'), function(){
 	console.log('Server is listening at port ' + app.get('port'));
 });
+
+var io = require('socket.io').listen(server);
+var ip = require('ip');
+Ip.add(app.get('port').toString(), ip.address());
+require('./routes/socketio')(io);

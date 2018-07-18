@@ -1,3 +1,17 @@
-<body>
-      
+<body>     
+    <div class="Wrapper">
+        <h1 class="Title"> WORD DETECTED </h1>
+        <p> Mode: <strong id='type'> </strong></p>
+        <p> Word <strong id="latest-word"></strong></p>
+        <button class="button" onclick="hard_on()"> Please </button>
+        <button class="button" onclick="hard_off()"> Expand </button>
+        <button class="button" onclick="Start()"> Start </button>
+        <button class="button" onclick="TurnonModeCount()">Mode</button>
+    </div>
+    <script>
+        var socket = io.connect('http://{{socketIO.ip}}:{{socketIO.port}}');
+        socket.on('ack', function(res) {
+            console.log(res);
+        })
+    </script>
 </body>
