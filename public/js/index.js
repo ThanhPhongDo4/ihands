@@ -7,7 +7,6 @@ var saidWord;
 var S = webkitSpeechRecognition || SpeechRecognition;
 var kind = 0;
 var recognition = new S();
-var sz = 1;
 var mode = 0;
 var imode = 0;
 // 1: mode count

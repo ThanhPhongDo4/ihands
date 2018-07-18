@@ -10,6 +10,7 @@
     </div>
     <script>
         var socket = io.connect('http://{{socketIO.ip}}:{{socketIO.port}}');
+        var sz = {{modesz}};
         socket.on('ack', function(res) {
             console.log(res);
         })

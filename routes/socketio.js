@@ -1,6 +1,7 @@
 var p1 = '1';
 var p0 = '0';
 var status = 1;
+var mode = require('../config/mode');
 module.exports = function(io) {
     io.on('connection', function(client) {
         client.emit('ack', {
@@ -14,12 +15,14 @@ module.exports = function(io) {
                {
                    io.sockets.emit('esp', '12');
                    status = 0;
+                   mode.update(status);
                }		
                else
                if(data == "0")
                {
                    io.sockets.emit('esp', '22');
                    status = 1;
+                   mode.update(status);
                }			
            }
            })

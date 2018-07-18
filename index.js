@@ -26,12 +26,10 @@ app.set('port', (process.env.PORT || 5000));
 // save port
 var Ip = require('./config/port');
 //
-
-var server = app.listen(app.get('port'), function(){
-	console.log('Server is listening at port ' + app.get('port'));
-});
-
-var io = require('socket.io').listen(server);
 var ip = require('ip');
+var server = app.listen(app.get('port'), function(){
+	console.log('http://localhost:'+ app.get('port'));
+});
+var io = require('socket.io').listen(server);
 Ip.add(app.get('port').toString(), ip.address());
 require('./routes/socketio')(io);
